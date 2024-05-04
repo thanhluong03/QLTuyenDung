@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThongTinUser"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_marginTop="-20dp"
+        android:textSize="25sp"
+        android:layout_marginBottom="40dp"
+        android:textColor="#0D8488"
+        android:textStyle="bold"
+        android:text="THÔNG TIN NGƯỜI DÙNG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/edUsernamend"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="90dp"
+        android:paddingLeft="90dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="#4BABAE"
+        android:hint="Tên người dùng"
+        android:textColorHint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/edUserPassnd"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:paddingRight="90dp"
+        android:paddingLeft="90dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="#4BABAE"
+        android:hint="Tên người dùng"
+        android:textColorHint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnThoatthongtin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/design_default_color_secondary_variant"
+        android:paddingLeft="80dp"
+        android:paddingTop="15dp"
+        android:paddingRight="80dp"
+        android:paddingBottom="15dp"
+        android:text="Thoát"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+</LinearLayout>
