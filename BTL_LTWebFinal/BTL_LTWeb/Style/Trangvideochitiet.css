@@ -1,0 +1,98 @@
+﻿main {
+    display: flex;
+    width: 100vw;
+}
+.left {
+    flex: 0.35;
+    height: 95vh;
+    width: 70vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.video {
+    width :80%;
+    margin-left: 0;
+    margin: 0;
+    height:50rem;
+}
+
+.right {
+    flex: 0.65;
+    height: 90vh;
+    width: 25vh;
+    overflow-y: scroll;
+}
+.post {
+    margin-top: 0;
+    margin-right: 0;
+    height: 50rem;
+    width: 20%;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.post-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .post-info > .user:hover {
+        background-color: transparent;
+    }
+
+    .post-info > .user > img {
+        height: 60px;
+        width: 60px;
+    }
+
+    .post-info > .user > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        margin-left: 0.5rem;
+    }
+
+        .post-info > .user > div > h6 {
+            font-size: 1rem;
+        }
+
+            .post-info > .user > div > h6:hover {
+                text-decoration: underline;
+            }
+
+        .post-info > .user > div > p {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+    .post-info > button {
+        margin-top: 1rem;
+        background-color: transparent;
+        border: 1px solid rgb(254, 44, 85);
+        color: rgb(254, 44, 85);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+        height: 1.7rem;
+        width: 5.7rem;
+    }
+
+        .post-info > button:hover {
+            background-color: rgba(254, 44, 86, 0.05);
+        }
+
+.post-content {
+    display: flex;
+    width: 42rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+    .post-content > video {
+        width: 90%;
+        border-radius: 10px;
+        margin-left: 1rem;
+        margin-top: 3rem;
+    }

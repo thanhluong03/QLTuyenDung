@@ -1,0 +1,31 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.border {
+    min-width: 300px;
+    border: 3px solid #333;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100vw;
+}
+
+.update {
+    padding: 5px;
+    margin: 120px 200px 50px 200px;
+    background-color: #f92e00;
+    text-align: center;
+    color: #fff;
+    justify-content: center;
+}
