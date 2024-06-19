@@ -49,12 +49,12 @@
             android:src="@drawable/user" />
 
         <TextView
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="32dp"
             android:layout_gravity="center_horizontal|bottom"
+            android:gravity="center"
             android:text="Thông tin người dùng"
-            android:textColor="#2F4F4F"
+            android:textColor="#4682B4"
             android:textSize="16dp"
             android:textStyle="bold" />
     </FrameLayout>
@@ -90,7 +90,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Sách"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <!-- Invoice Button -->
@@ -116,7 +116,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Hóa đơn"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
     </GridLayout>
     <!-- Top Books Button -->
@@ -135,12 +135,12 @@
             android:src="@drawable/bookhot" />
 
         <TextView
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|bottom"
+            android:gravity="center"
             android:text="Top sách bán chạy"
-            android:textColor="#2F4F4F"
+            android:textColor="#4682B4"
             android:textSize="16dp"
             android:textStyle="bold" />
     </FrameLayout>
@@ -176,7 +176,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Đổi mật khẩu"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <!-- Loout Button -->
@@ -203,7 +203,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Đăng xuất"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
     </GridLayout>
 

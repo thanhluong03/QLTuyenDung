@@ -54,10 +54,10 @@
             android:gravity="center"
             android:paddingRight="80dp"
             android:paddingBottom="15dp"
-            android:textColor="#2F4F4F"
-            android:textColorHint="#2F4F4F" />
+            android:textColor="#4682B4"
+            android:textColorHint="#4682B4" />
     <EditText
-        android:textColor="#2F4F4F"
+        android:textColor="#4682B4"
         android:id="@+id/edUserpass"
         android:paddingRight="80dp"
         android:paddingLeft="80dp"
@@ -66,7 +66,7 @@
         android:background="@drawable/loginbutton_background"
         android:hint="Mật khẩu"
         android:gravity="center"
-        android:textColorHint="#2F4F4F"
+        android:textColorHint="#4682B4"
         android:layout_width="300dp"
         android:layout_height="wrap_content"/>
     <TextView
@@ -89,7 +89,7 @@
         android:backgroundTint="#B0E0E6"
         android:paddingBottom="15dp"
         android:text="Đăng nhập"
-        android:textColor="#2F4F4F"
+        android:textColor="#4682B4"
         android:textStyle="bold" />
     <LinearLayout
         android:layout_width="wrap_content"

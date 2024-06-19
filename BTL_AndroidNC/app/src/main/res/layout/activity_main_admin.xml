@@ -52,11 +52,12 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Danh sách người dùng"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <!-- Category Button -->
         <FrameLayout
+            android:id="@+id/Category"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -78,7 +79,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Thể loại"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <!-- Book Button -->
@@ -104,7 +105,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Sách"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <!-- Invoice Button -->
@@ -130,7 +131,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Hóa đơn"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
         <!-- Statistics Button -->
         <FrameLayout
@@ -155,7 +156,7 @@
                 android:textSize="16dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:text="Thống kê"
-                android:textColor="#2F4F4F" />
+                android:textColor="#4682B4" />
         </FrameLayout>
 
         <FrameLayout
@@ -178,7 +179,7 @@
                 android:layout_gravity="center_horizontal|bottom"
                 android:gravity="center"
                 android:text="Đăng xuất"
-                android:textColor="#2F4F4F"
+                android:textColor="#4682B4"
                 android:textSize="16dp"
                 android:textStyle="bold" />
         </FrameLayout>
