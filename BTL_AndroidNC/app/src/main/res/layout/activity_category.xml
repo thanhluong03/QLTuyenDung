@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
         <ImageView
             android:layout_gravity="center"
-            android:id="@+id/imgTimKiem"
+            android:id="@+id/imgoutcategory"
             android:layout_width="50dp"
             android:layout_height="36dp"
             android:src="@drawable/outcategory"/>
@@ -33,15 +33,41 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <EditText
+            android:id="@+id/txtTenTimCate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:hint="Nhập dữ liệu"
+            android:textSize="20dp"
+            />
+        <ImageView
+            android:id="@+id/imgTimKiemCate"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="2"
+            android:src="@drawable/searchcate"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="20dp">
+        android:layout_marginLeft="25dp">
+
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/liaddcategory"
+            android:layout_width="181dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imgload"
@@ -49,10 +75,11 @@
                 android:layout_height="27dp"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/addcategory" />
+
             <TextView
-                android:layout_marginLeft="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:text="Thêm thể loại"
                 android:textColor="#4682B4"
                 android:textSize="20dp"
@@ -60,7 +87,7 @@
         </LinearLayout>
     </LinearLayout>
     <ListView
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:id="@+id/listViewCategories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -1,41 +1,133 @@
 package com.example.appbansach.Adapter;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbansach.R;
 import com.example.appbansach.modle.Book;
-import com.example.appbansach.modle.Category;
+import com.example.appbansach.updateBookActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
-public class BookAdapter extends ArrayAdapter<Book> {
-    private Context context;
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+
     private List<Book> bookList;
-    public BookAdapter(@NonNull Context context, @NonNull List<Book> bookList) {
-        super(context, R.layout.listbook_item, bookList);
-        this.context = context;
+    private OnItemClickListener mListener;
+    private Context mContext;
+
+    public BookAdapter(Context context, List<Book> bookList) {
+        this.mContext = context;
         this.bookList = bookList;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listbook_item, parent, false);
-        Book book = bookList.get(position);
-        TextView masach = convertView.findViewById(R.id.textViewID);
-        TextView tieude = convertView.findViewById(R.id.textViewTitle);
-        TextView tacgia = convertView.findViewById(R.id.textViewAuthor);
-        masach.setText(book.getId());
-        tieude.setText(book.getTitle());
-        tacgia.setText(book.getAuthor());
+    public interface OnItemClickListener {
+        void onItemClick(Book book);
+    }
 
-        return convertView;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public ImageView imageView;
+        public TextView txtBookName;
+        public TextView txtAuthor;
+        public TextView txtPrice;
+        public ImageView list;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.imageView);
+            txtBookName = itemView.findViewById(R.id.txtBookName);
+            txtAuthor = itemView.findViewById(R.id.txtAuthor);
+            txtPrice = itemView.findViewById(R.id.txtPrice);
+            list = itemView.findViewById(R.id.list);
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && mListener != null) {
+                    mListener.onItemClick(bookList.get(position));
+                }
+            });
+
+            list.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && mListener != null) {
+                    showOptionsDialog(mContext, bookList.get(position));
+                }
+            });
+        }
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View bookView = inflater.inflate(R.layout.item_book, parent, false);
+
+        return new ViewHolder(bookView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Book book = bookList.get(position);
+        double donGia = book.getDonGia();
+
+        NumberFormat vnFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+
+        String formattedDonGia = vnFormat.format(donGia);
+
+        holder.txtBookName.setText(book.getTenSach());
+        holder.txtAuthor.setText(book.getTacGia());
+        holder.txtPrice.setText(formattedDonGia);
+    }
+
+    private void showOptionsDialog(Context context, Book book) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Chọn tác vụ");
+        builder.setItems(new CharSequence[]{"Sửa", "Xóa"}, (dialog, which) -> {
+            switch (which) {
+                case 0:
+                    Intent intent = new Intent(context, updateBookActivity.class);
+                    intent.putExtra("book_id", book.getMaSach());
+                    context.startActivity(intent);
+                    break;
+                case 1:
+                    deleteBook(book);
+                    break;
+            }
+        });
+        builder.create().show();
+    }
+
+    private void deleteBook(Book book) {
+        int position = bookList.indexOf(book);
+        bookList.remove(position);
+        notifyItemRemoved(position);
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("books");
+        mDatabase.child(book.getMaSach()).removeValue();
+    }
+
+    @Override
+    public int getItemCount() {
+        return bookList.size();
     }
 }

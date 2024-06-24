@@ -13,6 +13,27 @@
         android:theme="@style/Theme.AppBanSach"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".addBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".updateBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookActivity"
             android:exported="false" />
         <activity

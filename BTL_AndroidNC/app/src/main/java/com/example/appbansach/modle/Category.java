@@ -1,7 +1,7 @@
 package com.example.appbansach.modle;
 
 public class Category {
-    private String categoryId;
+    private String id;
     private String name;
 
     public Category() {
@@ -9,16 +9,16 @@ public class Category {
     }
 
     public Category(String id, String name) {
-        this.categoryId = id;
+        this.id = id;
         this.name = name;
     }
 
     public String getId() {
-        return categoryId;
+        return id;
     }
 
-    public void setId(String categoryId) {
-        this.categoryId= categoryId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
