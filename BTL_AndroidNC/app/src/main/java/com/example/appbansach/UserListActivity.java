@@ -9,10 +9,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appbansach.Adapter.UserAdapter;
+import com.example.appbansach.modle.Book;
 import com.example.appbansach.modle.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,8 +29,9 @@ public class UserListActivity extends AppCompatActivity {
     private RecyclerView userRecyclerView;
     private DatabaseReference databaseReference;
     private List<User> userList;
+    private List<User> filteredUserList;
     private UserAdapter userAdapter;
-    private Toolbar toolbarUserList;
+    private ImageView outlistuser;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,12 +39,21 @@ public class UserListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-        userRecyclerView = findViewById(R.id.user_recycler_view);
-        toolbarUserList = findViewById(R.id.toolbarUser);
-        setSupportActionBar(toolbarUserList);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiển thị nút back
-        getSupportActionBar().setTitle("Danh sách");
+        Intent intent = getIntent();
+        String accountType = intent.getStringExtra("role");
+//        Toast.makeText(this, ""+ accountType, Toast.LENGTH_SHORT).show();
 
+        outlistuser = findViewById(R.id.imgoutlistuser);
+        outlistuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserListActivity.this, MainActivityAdmin.class);
+                intent.putExtra("role", accountType);
+                startActivity(intent);
+            }
+        });
+
+        userRecyclerView = findViewById(R.id.user_recycler_view);
         userRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         userList = new ArrayList<>();
         userAdapter = new UserAdapter(userList);
@@ -72,6 +85,7 @@ public class UserListActivity extends AppCompatActivity {
                 Toast.makeText(UserListActivity.this, "Đã có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

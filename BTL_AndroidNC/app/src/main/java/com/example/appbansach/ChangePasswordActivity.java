@@ -3,12 +3,14 @@ package com.example.appbansach;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
@@ -21,24 +23,31 @@ public class ChangePasswordActivity extends AppCompatActivity {
     private Button btnChangePassword;
     private DatabaseReference databaseReference;
 
-    private Toolbar toolbarChangePassword;
+    private ImageView outpass;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
         Intent intent = getIntent();
-
+        String accountType = intent.getStringExtra("role");
         String username = intent.getStringExtra("username");
         edtUsername = findViewById(R.id.edtUsername);
         edtNewPassword = findViewById(R.id.edtNewPassword);
         btnChangePassword = findViewById(R.id.btnChangePassword);
 
-        toolbarChangePassword = findViewById(R.id.toolbarChangePassword);
-        setSupportActionBar(toolbarChangePassword);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiển thị nút back
-        getSupportActionBar().setTitle("Về trang user");
+        outpass = findViewById(R.id.imgoutpass);
+        outpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChangePasswordActivity.this, MainActivityUser.class);
+                intent.putExtra("role", accountType);
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
 
         edtUsername.setText(username); // Hiển thị username trong EditText
         edtUsername.setEnabled(false);

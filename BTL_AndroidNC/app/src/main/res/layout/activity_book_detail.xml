@@ -194,7 +194,7 @@
         android:weightSum="10">
 
         <ImageView
-            android:id="@+id/imgCartBook"
+            android:id="@+id/btnAddCart"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="4"

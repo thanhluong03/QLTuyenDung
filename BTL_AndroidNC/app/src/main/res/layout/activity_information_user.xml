@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InformationUserActivity"
+    android:background="@drawable/background"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +39,9 @@
         android:adjustViewBounds="true"
         android:contentDescription="Image"
         android:scaleType="fitCenter"
-        android:src="@drawable/user"/>
+        android:src="@drawable/user"
+        android:background="@drawable/categorytron"
+        android:clipToOutline="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -8,11 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appbansach.Adapter.CartAdapter;
 import com.example.appbansach.modle.Book;
+import com.example.appbansach.modle.CartItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,40 +24,52 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.UUID;
 
 public class BookDetailActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase, mDatabaseCart;
     private Toolbar mToolbar;
-
-    private ImageView Cartbook;
+    private ImageView btnAddCart;
+    private TextView BuyBook;
+    private String tenSach;
+    private Double giaSach;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+        btnAddCart = findViewById(R.id.btnAddCart);
+        BuyBook = findViewById(R.id.tvBuyBooK);
 
+        Intent intent = getIntent();
+        String accountType = intent.getStringExtra("role");
+        if ("admin".equals(accountType)) {
+            btnAddCart.setVisibility(View.GONE);
+            BuyBook.setVisibility(View.GONE);
+        } else if("user".equals(accountType)){
+            btnAddCart.setVisibility(View.VISIBLE);
+            BuyBook.setVisibility(View.VISIBLE);
+        }
         // Khởi tạo Firebase
         mDatabase = FirebaseDatabase.getInstance().getReference("books");
-
+        mDatabaseCart = FirebaseDatabase.getInstance().getReference();
         // Thiết lập Toolbar
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Hiển thị nút back
         getSupportActionBar().setTitle("Chi tiết sách");
         // Lấy dữ liệu từ Intent và truy vấn chi tiết sách từ Firebase
-        Intent intent = getIntent();
-        if (intent != null) {
-            String bookId = intent.getStringExtra("book_id");
-            fetchBookDetails(bookId);
-        }
+        String bookId = intent.getStringExtra("book_id");
+        String username = getIntent().getStringExtra("username");
+        name = username;
+        fetchBookDetails(bookId);
 
-        Cartbook = findViewById(R.id.imgCartBook);
-        Cartbook.setOnClickListener(new View.OnClickListener() {
+        btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(BookDetailActivity.this, CartBookActivity.class);
-                startActivity(intent1);
+                addCartToFirebase();
             }
         });
     }
@@ -67,6 +82,8 @@ public class BookDetailActivity extends AppCompatActivity {
                 if (book != null) {
                     // Hiển thị thông tin sách lên giao diện
                     displayBookDetails(book);
+                    tenSach = book.getTenSach();
+                    giaSach = book.getDonGia();
                 } else {
                     Toast.makeText(BookDetailActivity.this, "Không tìm thấy thông tin sách", Toast.LENGTH_SHORT).show();
                 }
@@ -80,11 +97,8 @@ public class BookDetailActivity extends AppCompatActivity {
     }
 
     private void displayBookDetails(Book book) {
-
         double donGia = book.getDonGia();
-
         NumberFormat vnFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-
         String formattedDonGia = vnFormat.format(donGia);
 
         TextView txtMaSach = findViewById(R.id.txtMaSach);
@@ -94,7 +108,6 @@ public class BookDetailActivity extends AppCompatActivity {
         TextView txtDonGia = findViewById(R.id.txtDonGia);
         TextView txtSoLuong = findViewById(R.id.txtSoLuong);
         TextView txtTenNXB = findViewById(R.id.txtTenNXB);
-
 
         txtMaSach.setText(book.getMaSach());
         txtTenSach.setText(book.getTenSach());
@@ -115,5 +128,59 @@ public class BookDetailActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void addCartToFirebase() {
+        mDatabaseCart.child("carts").orderByChild("name").equalTo(tenSach).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean itemExists = false;
+                String existingItemId = null;
+                int existingItemQuantity = 0;
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    CartItem cartItem = snapshot.getValue(CartItem.class);
+                    if (cartItem != null && cartItem.getName().equals(tenSach)) {
+                        itemExists = true;
+                        existingItemId = cartItem.getItemId();
+                        existingItemQuantity = cartItem.getQuantity();
+                        break;
+                    }
+                }
+
+                if (itemExists) {
+                    int newQuantity = existingItemQuantity + 1;
+                    mDatabaseCart.child("carts").child(existingItemId).child("quantity").setValue(newQuantity)
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(BookDetailActivity.this, "Cập nhật số lượng sách thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(BookDetailActivity.this, CartsActivity.class);
+                                intent.putExtra("username", name);
+                                startActivity(intent);
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(BookDetailActivity.this, "Cập nhật số lượng sách thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
+                } else {
+                    // Add a new cart item
+                    String maCart = UUID.randomUUID().toString();
+                    CartItem cart = new CartItem(maCart, name, tenSach, giaSach, 1);
+                    mDatabaseCart.child("carts").child(maCart).setValue(cart)
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(BookDetailActivity.this, "Thêm sách vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(BookDetailActivity.this, CartsActivity.class);
+                                intent.putExtra("username", name);
+                                startActivity(intent);
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(BookDetailActivity.this, "Thêm sách vào giỏ hàng thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(BookDetailActivity.this, "Kiểm tra mã sách thất bại: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

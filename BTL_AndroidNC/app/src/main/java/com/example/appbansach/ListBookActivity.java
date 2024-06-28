@@ -53,6 +53,7 @@ public class ListBookActivity extends AppCompatActivity {
         //Nhận dữ liệu trạng thái của tài khoản là user/admin
         Intent intent = getIntent();
         String accountType = intent.getStringExtra("role");
+        String username = intent.getStringExtra("username");
 
         //Toast.makeText(this, "check" + accountType, Toast.LENGTH_SHORT).show();
 
@@ -109,12 +110,14 @@ public class ListBookActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(book -> {
             Intent intent1 = new Intent(ListBookActivity.this, BookDetailActivity.class);
             intent1.putExtra("book_id", book.getMaSach());
+            intent1.putExtra("username", username);
+            intent1.putExtra("role", accountType);
             startActivity(intent1);
         });
         cartbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(ListBookActivity.this, CartBookActivity.class);
+                Intent intent1 = new Intent(ListBookActivity.this, CartsActivity.class);
                 startActivity(intent1);
             }
         });

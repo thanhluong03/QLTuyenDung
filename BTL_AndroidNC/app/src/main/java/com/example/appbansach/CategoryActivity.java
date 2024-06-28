@@ -52,6 +52,8 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        Intent intent = getIntent();
+        String acountType = intent.getStringExtra("role");
         databaseCategories = FirebaseDatabase.getInstance().getReference("categories");
         databaseBooks = FirebaseDatabase.getInstance().getReference("books");
 //                saveCategories();
@@ -80,6 +82,7 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CategoryActivity.this, MainActivityAdmin.class);
+                intent.putExtra("role", acountType);
                 startActivity(intent);
             }
         });

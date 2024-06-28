@@ -32,6 +32,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityAdmin.this, CategoryActivity.class);
+                intent.putExtra("role", accountType);
                 startActivity(intent);
             }
         });
@@ -61,6 +62,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityAdmin.this, UserListActivity.class);
+                intent.putExtra("role", accountType);
                 startActivity(intent);
                 finish();
             }

@@ -38,8 +38,9 @@ public class InformationUserActivity extends AppCompatActivity {
 
         // Lấy dữ liệu từ Intent và truy vấn chi tiết sách từ Firebase
         Intent intent = getIntent();
+        String accountType = intent.getStringExtra("role");
+        String username = intent.getStringExtra("username");
         if (intent != null) {
-            String username = intent.getStringExtra("username");
             fetchBookDetails(username);
         }
 
@@ -48,8 +49,11 @@ public class InformationUserActivity extends AppCompatActivity {
         outuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(InformationUserActivity.this, MainActivityUser.class);
-                startActivity(intent1);
+               // String username = intent.getStringExtra("username");
+                Intent intent = new Intent(InformationUserActivity.this, MainActivityUser.class);
+                intent.putExtra("username",username);
+                intent.putExtra("role", accountType);
+                startActivity(intent);
             }
         });
     }

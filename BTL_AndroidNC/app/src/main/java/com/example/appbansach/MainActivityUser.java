@@ -49,12 +49,14 @@ public class MainActivityUser extends AppCompatActivity {
                 String username = getIntent().getStringExtra("username");
                 Intent intent = new Intent(MainActivityUser.this, ChangePasswordActivity.class);
                 intent.putExtra("username", username);
+                intent.putExtra("role", accountType);
                 startActivity(intent);
             }
         });
 
         user = findViewById(R.id.user);
         String username = getIntent().getStringExtra("username");
+        //String accountType = getIntent().getStringExtra("role");
         user.setText(username);
 
         BookUsers = findViewById(R.id.bookuser);
@@ -62,7 +64,8 @@ public class MainActivityUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityUser.this, ListBookActivity.class);
-                intent.putExtra("role", accountType); // Truyền loại tài khoản (admin/user)
+                intent.putExtra("role", accountType);
+                intent.putExtra("username", username);// Truyền loại tài khoản (admin/user)
                 startActivity(intent);
             }
         });
@@ -73,6 +76,7 @@ public class MainActivityUser extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityUser.this, InformationUserActivity.class);
                 intent.putExtra("username", username);
+                intent.putExtra("role", accountType);
                 startActivity(intent);
             }
         });
