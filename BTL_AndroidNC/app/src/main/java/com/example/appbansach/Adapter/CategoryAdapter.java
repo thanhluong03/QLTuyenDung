@@ -51,7 +51,13 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.listcategory_item, parent, false);
         Category category = categoryList.get(position);
         TextView theloai = convertView.findViewById(R.id.textViewName);
-        theloai.setText(category.getName());
+        ImageView anhCate = convertView.findViewById(R.id.imganhcate);
+
+        //chuyen tu dang byte sang dang anh
+//        byte[] anh = category.getImgtheloai();
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(anh,0,anh.length);
+//        anhCate.setImageBitmap(bitmap);
+//        theloai.setText(category.getName());
 
         updatecate = convertView.findViewById(R.id.imgeupdatecate);
         updatecate.setOnClickListener(new View.OnClickListener() {

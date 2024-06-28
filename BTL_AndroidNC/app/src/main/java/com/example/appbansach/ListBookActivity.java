@@ -1,8 +1,11 @@
 package com.example.appbansach;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,9 +36,12 @@ public class ListBookActivity extends AppCompatActivity {
     private List<Book> bookList;
     private List<Book> filteredBookList;
     private TextView addBook;
+
+    private ImageView list;
     private DatabaseReference mDatabase;
     private Toolbar mToolbar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +92,7 @@ public class ListBookActivity extends AppCompatActivity {
             intent.putExtra("book_id", book.getMaSach());
             startActivity(intent);
         });
+
     }
     // Lấy danh sách sách trong firebase
     private void fetchBooksFromFirebase() {

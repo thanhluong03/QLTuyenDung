@@ -65,6 +65,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                 }
             });
 
+            //list.setVisibility(View.GONE);
             list.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION && mListener != null) {

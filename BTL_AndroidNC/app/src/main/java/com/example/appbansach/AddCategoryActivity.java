@@ -1,13 +1,18 @@
 package com.example.appbansach;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.appbansach.modle.Category;
@@ -17,11 +22,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
+
 public class AddCategoryActivity extends AppCompatActivity {
 
+//    private static final int REQUEST_CODE = 123;
+//    private static final int RESULT_LOAD_IMAGE = 100;
+//    private Uri uri;
     private EditText editTextCategoryName;
     private EditText editTextCategoryID;
     private Button buttonAddCategory;
+    private ImageView anhcate;
     private DatabaseReference databaseCategories;
 
     @Override
@@ -31,6 +42,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         editTextCategoryName = findViewById(R.id.editTextCategoryName);
         editTextCategoryID = findViewById(R.id.editTextCategoryID);
         buttonAddCategory = findViewById(R.id.buttonAddCategory);
+        anhcate = findViewById(R.id.imganhcate);
 
         databaseCategories = FirebaseDatabase.getInstance().getReference("categories");
 
@@ -103,4 +115,33 @@ public class AddCategoryActivity extends AppCompatActivity {
             }
         });
     }
+
+//    @Override
+//
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null){
+//
+//            uri = data.getData();
+//
+//            anhcate.setImageURI(uri);
+//
+//        }
+//
+//    }
+//    private byte[] imageViewToByte(ImageView imageView) {
+//
+//        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+//
+//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//
+//        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//
+//        byte[] byteArray = stream.toByteArray();
+//
+//        return byteArray;
+//
+//    }
 }
