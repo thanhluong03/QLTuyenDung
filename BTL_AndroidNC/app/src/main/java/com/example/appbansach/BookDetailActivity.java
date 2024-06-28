@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ public class BookDetailActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private Toolbar mToolbar;
+
+    private ImageView Cartbook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,15 @@ public class BookDetailActivity extends AppCompatActivity {
             String bookId = intent.getStringExtra("book_id");
             fetchBookDetails(bookId);
         }
+
+        Cartbook = findViewById(R.id.imgCartBook);
+        Cartbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(BookDetailActivity.this, CartBookActivity.class);
+                startActivity(intent1);
+            }
+        });
     }
 
     private void fetchBookDetails(String bookId) {

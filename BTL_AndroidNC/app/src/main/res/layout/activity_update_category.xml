@@ -22,7 +22,7 @@
     <TextView android:textSize="27sp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:textColor="#0D8488"
+        android:textColor="#4682B4"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:text="SỬA THỂ LOẠI"

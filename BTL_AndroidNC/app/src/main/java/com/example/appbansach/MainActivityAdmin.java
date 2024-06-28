@@ -7,18 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
     private FrameLayout category;
     private FrameLayout book;
+    private FrameLayout logOut;
+
+    private FrameLayout userList;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
-
+        //Nhận dữ liệu trạng thái của tài khoản là user/admin
+        Intent intent = getIntent();
+        String accountType = intent.getStringExtra("role");
+        //Toast.makeText(this, "check" + accountType, Toast.LENGTH_SHORT).show();
 
         category = findViewById(R.id.Category);
         category.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +41,28 @@ public class MainActivityAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivityAdmin.this, ListBookActivity.class);
+                intent.putExtra("role", accountType);
                 startActivity(intent);
+            }
+        });
+
+        logOut = findViewById(R.id.Logout);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivityAdmin.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        userList = findViewById(R.id.user_list);
+        userList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivityAdmin.this, UserListActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

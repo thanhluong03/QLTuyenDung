@@ -30,11 +30,13 @@
         android:textColor="#FF0000"
         android:textStyle="bold"
         android:textSize="18dp"
+        android:id="@+id/user"
         android:layout_gravity="center"
         android:padding="8dp"/>
 </LinearLayout>
     <!-- User information Button -->
     <FrameLayout
+        android:id="@+id/Informationuser"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:layout_width="300dp"
@@ -69,7 +71,7 @@
         android:layout_gravity="center">
         <!-- Book Button -->
         <FrameLayout
-            android:id="@+id/Bookuser"
+            android:id="@+id/bookuser"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -161,6 +163,7 @@
             android:layout_rowWeight="1"
             android:layout_margin="10dp"
             android:padding="2dp"
+            android:id="@+id/btnChangePassword"
             android:background="@drawable/button_background">
 
             <ImageView
@@ -182,6 +185,7 @@
 
         <!-- Loout Button -->
         <FrameLayout
+            android:id="@+id/logOut"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"

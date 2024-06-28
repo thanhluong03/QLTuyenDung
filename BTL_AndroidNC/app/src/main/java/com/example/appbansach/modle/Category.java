@@ -4,8 +4,6 @@ public class Category {
     private String id;
     private String name;
 
-//    private byte[] imgtheloai;
-
     public Category() {
         // Default constructor required for calls to DataSnapshot.getValue(Category.class)
     }
@@ -31,11 +29,4 @@ public class Category {
         this.name = name;
     }
 
-//    public byte[] getImgtheloai() {
-//        return imgtheloai;
-//    }
-//
-//    public void setImgtheloai(byte[] imgtheloai) {
-//        this.imgtheloai = imgtheloai;
-//    }
 }

@@ -11,7 +11,7 @@
 
     <TextView android:textSize="27sp"
         android:layout_marginBottom="40dp"
-        android:textColor="#0D8488"
+        android:textColor="#4682B4"
         android:textStyle="bold"
         android:text="ĐĂNG KÝ TÀI KHOẢN"
         android:layout_width="wrap_content"
@@ -43,6 +43,7 @@
         android:layout_marginBottom="20dp"
         android:textColorHint="#4682B4"
         android:layout_width="300dp"
+        android:inputType="textPassword"
         android:layout_height="wrap_content"/>
     <EditText
         android:textColor="#4682B4"
@@ -56,7 +57,38 @@
         android:gravity="center"
         android:textColorHint="#4682B4"
         android:layout_width="300dp"
+        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"/>
+    <EditText
+        android:textColor="#4682B4"
+        android:id="@+id/edSDT"
+        android:paddingRight="80dp"
+        android:paddingLeft="80dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="@drawable/loginbutton_background"
+        android:hint="Số điện thoại"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:textColorHint="#4682B4"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edDiaChi"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loginbutton_background"
+        android:gravity="center"
+        android:hint="Địa chỉ"
+        android:paddingLeft="80dp"
+        android:paddingTop="15dp"
+        android:paddingRight="80dp"
+        android:paddingBottom="15dp"
+        android:textColor="#4682B4"
+        android:textColorHint="#4682B4" />
+
     <TextView
         android:id="@+id/tvError"
         android:layout_width="155dp"
@@ -67,7 +99,7 @@
         android:textStyle="italic" />
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

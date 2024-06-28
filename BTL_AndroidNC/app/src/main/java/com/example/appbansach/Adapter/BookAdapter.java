@@ -4,12 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,10 +31,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private List<Book> bookList;
     private OnItemClickListener mListener;
     private Context mContext;
+    private String accountType;
 
-    public BookAdapter(Context context, List<Book> bookList) {
+    public BookAdapter(Context context, List<Book> bookList, String accountType) {
         this.mContext = context;
         this.bookList = bookList;
+        this.accountType= accountType;
     }
 
     public interface OnItemClickListener {
@@ -65,7 +69,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
                 }
             });
 
-            //list.setVisibility(View.GONE);
             list.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION && mListener != null) {
@@ -98,6 +101,15 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.txtBookName.setText(book.getTenSach());
         holder.txtAuthor.setText(book.getTacGia());
         holder.txtPrice.setText(formattedDonGia);
+
+      //  Toast.makeText(mContext, "Account Type in Adapter: " + accountType, Toast.LENGTH_SHORT).show();
+        // Kiểm tra loại tài khoản và thiết lập visibility cho Button
+        if ("admin".equals(accountType)) {
+            holder.list.setVisibility(View.VISIBLE);
+        } else if("user".equals(accountType)){
+            holder.list.setVisibility(View.GONE);
+        }
+
     }
 
     private void showOptionsDialog(Context context, Book book) {

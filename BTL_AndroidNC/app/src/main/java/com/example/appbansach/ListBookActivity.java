@@ -38,14 +38,23 @@ public class ListBookActivity extends AppCompatActivity {
     private TextView addBook;
 
     private ImageView list;
+    private String accountType;
     private DatabaseReference mDatabase;
     private Toolbar mToolbar;
+
+    private ImageView cartbook;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_book);
+
+        //Nhận dữ liệu trạng thái của tài khoản là user/admin
+        Intent intent = getIntent();
+        String accountType = intent.getStringExtra("role");
+
+        //Toast.makeText(this, "check" + accountType, Toast.LENGTH_SHORT).show();
 
         //toolbar
         mToolbar = findViewById(R.id.toolbar);
@@ -60,14 +69,24 @@ public class ListBookActivity extends AppCompatActivity {
         addBook = findViewById(R.id.addBook);
         SearchView searchView = findViewById(R.id.search_view);
 
+
+        cartbook = findViewById(R.id.imgcartbook);
+        if ("admin".equals(accountType)) {
+            addBook.setVisibility(View.VISIBLE);
+            cartbook.setVisibility(View.GONE);
+        } else if("user".equals(accountType)){
+            addBook.setVisibility(View.GONE);
+            cartbook.setVisibility(View.VISIBLE);
+        }
+
         bookList = new ArrayList<>();
         filteredBookList = new ArrayList<>();
 
         fetchBooksFromFirebase();
 
         addBook.setOnClickListener(v -> {
-            Intent intent = new Intent(ListBookActivity.this, addBookActivity.class);
-            startActivity(intent);
+            Intent intent1 = new Intent(ListBookActivity.this, addBookActivity.class);
+            startActivity(intent1);
         });
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -83,14 +102,21 @@ public class ListBookActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new BookAdapter(this, filteredBookList);
+        adapter = new BookAdapter(this, filteredBookList, accountType);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter.setOnItemClickListener(book -> {
-            Intent intent = new Intent(ListBookActivity.this, BookDetailActivity.class);
-            intent.putExtra("book_id", book.getMaSach());
-            startActivity(intent);
+            Intent intent1 = new Intent(ListBookActivity.this, BookDetailActivity.class);
+            intent1.putExtra("book_id", book.getMaSach());
+            startActivity(intent1);
+        });
+        cartbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(ListBookActivity.this, CartBookActivity.class);
+                startActivity(intent1);
+            }
         });
 
     }

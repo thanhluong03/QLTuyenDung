@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Danh Sách Thể loại"
+            android:textColor="#4682B4"
             android:textSize="25dp"
-            android:textStyle="bold"
-            android:textColor="#4682B4"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,8 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="Thêm thể loại"
-                android:textColor="#4682B4"
                 android:textSize="20dp"
+                android:textColor="#808080"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

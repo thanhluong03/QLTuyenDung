@@ -53,8 +53,8 @@ public class addBookActivity extends AppCompatActivity {
         btnAddBook = findViewById(R.id.btnAddBook);
         tvTheLoai = findViewById(R.id.tvTheLoai);
 
-//        etTenTheLoai.setEnabled(false);
-//        etTenTheLoai.setFocusable(false);
+        etTenTheLoai.setEnabled(false);
+        etTenTheLoai.setFocusable(false);
         // Thiết lập sự kiện click cho nút thêm sách
         btnAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +62,13 @@ public class addBookActivity extends AppCompatActivity {
                 addBookToFirebase();
             }
         });
-//        tvTheLoai.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//              //  showGenreDialog(etTenTheLoai);
-//                Toast.makeText(addBookActivity.this, "dfhjdhfj", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        tvTheLoai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  showGenreDialog(etTenTheLoai);
+                Toast.makeText(addBookActivity.this, "dfhjdhfj", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void addBookToFirebase() {

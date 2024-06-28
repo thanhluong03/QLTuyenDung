@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Mã sách"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Tên sách"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
                 android:layout_marginBottom="16dp"
                 android:drawableRight="@android:drawable/ic_menu_add"
                 android:text="Thể loại"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Tác giả"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Đơn giá"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Số lượng"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Tên NXB"
-                android:textColor="#009999"
+                android:textColor="#4682B4"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -156,7 +156,7 @@
         android:id="@+id/btnAddBook"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:textColor="#009999"
+        android:textColor="#4682B4"
         android:layout_marginLeft="10dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
