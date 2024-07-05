@@ -1,0 +1,174 @@
+﻿
+
+@{ ViewData["Title"] = "Danh sách việc làm"; }
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/DanhSachViecLam/styles.css" rel="stylesheet" />
+    <link href="~/css/DanhSachViecLam/grid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/DanhSachViecLam/icons/fontawesome-free-6.4.2-web/fontawesome-free-6.4.2-web/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="vng.png" alt="VNG Logo" class="logo">
+            <nav class="navigations">
+                <a href="#">Trang chủ</a>
+                <a href="#">Tuyển dụng</a>
+                <a href="#">Ứng viên</a>
+                <a href="#">Quản lý</a>
+            </nav>
+            <div class="auth-buttons">
+                <button>Đăng nhập</button>
+                <button>Đăng ký</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="search-section">
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm theo tên, vị trí ứng tuyển">
+                <button><i class="fas fa-search"></i> Tìm kiếm</button>
+            </div>
+        </section>
+        <section class="job-info-section">
+            <h2>Thông tin việc làm</h2>
+            <div class="grid wide">
+                <div class="job-list">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="job-header-title">
+                                SOFTWARE ENGINEER, DIGITAL BUSINESS
+                            </div>
+                            <div class="job-header-location">
+                                <i class="fa-solid fa-location-dot location-icon"></i>
+                                <p class="header-title">Hà Nội</p>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <div class="job-description-title">
+                                <p class="description-title">We are currently seeking an experienced Front-End Developer with a strong background in React and TypeScript to join our AI Product team.</p>
+                            </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Số lượng: 2</span>
+                            </div>
+                        </div>
+                        <div class="job-details">
+                            <div class="job-details-apply">
+                                <div class="details-apply-deadline">
+                                    <span class="apply-deadline">Hạn nộp: 01-07-2024</span>
+                                </div>
+                                <div class="details-apply-btn">
+                                    <button class="btn-apply">Ứng tuyển</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="job-card">
+                        <div class="job-header">
+                            <div class="job-header-title">
+                                SOFTWARE ENGINEER, DIGITAL BUSINESS
+                            </div>
+                            <div class="job-header-location">
+                                <i class="fa-solid fa-location-dot location-icon"></i>
+                                <p class="header-title">Hà Nội</p>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            <div class="job-description-title">
+                                <p class="description-title">We are currently seeking an experienced Front-End Developer with a strong background in React and TypeScript to join our AI Product team.</p>
+                            </div>
+                            <div class="job-description-quanity">
+                                <span class="description-quanity">Số lượng: 2</span>
+                            </div>
+                        </div>
+                        <div class="job-details">
+                            <div class="job-details-apply">
+                                <div class="details-apply-deadline">
+                                    <span class="apply-deadline">Hạn nộp: 01-07-2024</span>
+                                </div>
+                                <div class="details-apply-btn">
+                                    <button class="btn-apply">Ứng tuyển</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <hr />
+    <footer class="footer">
+        <div class="footer-social">
+            <div class="footer-social__img">
+                <img src="vng.png" alt="VNG Logo" class="footer-logo">
+            </div>
+
+            <div class="footer-social-media">
+                <div class="social-media">
+                    <i class="fa-brands fa-facebook-f icon"></i>
+                    <i class="fa-brands fa-linkedin-in icon"></i>
+                    <i class="fa-brands fa-instagram icon"></i>
+                    <i class="fa-brands fa-youtube icon"></i>
+                </div>
+                <div class="contact-info">
+                    <i class="fa-solid fa-phone telephone-icon"></i>
+                    <p class="contact-telephone">(8428) - 3962 3888</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-infor">
+            <div class="col l-2-4">
+                <h3 class="footer__heading">Về VNG</h3>
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="" class="footer__item-link">Sứ mệnh</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Giá trị cốt lõi</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Cột mốc chính</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Ban lãnh đạo cấp cao</a></li>
+                </ul>
+            </div>
+
+            <div class="col l-2-4">
+                <h3 class="footer__heading">Tin tức</h3>
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="" class="footer__item-link">Tin tức mới nhất</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Thư viện</a></li>
+                </ul>
+            </div>
+
+            <div class="col l-2-4">
+                <h3 class="footer__heading">Sản phẩm</h3>
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="" class="footer__item-link">Trò chơi trực tuyến</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Zalo & AI</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Thanh toán và tài chính</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Chuyển đổi số</a></li>
+                </ul>
+            </div>
+
+            <div class="col l-2-4">
+                <h3 class="footer__heading">Con người</h3>
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="" class="footer__item-link">Con người VNG</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Cuộc sống VNG</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">Cơ hội nghề nghiệp</a></li>
+                </ul>
+            </div>
+
+            <div class="col l-2-4">
+                <h3 class="footer__heading">Trách nhiệm cộng đồng</h3>
+                <ul class="footer__list">
+                    <li class="footer__item"><a href="" class="footer__item-link">Quỹ kiến tạo ước mơ</a></li>
+                    <li class="footer__item"><a href="" class="footer__item-link">các chương trình nổi bật</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
